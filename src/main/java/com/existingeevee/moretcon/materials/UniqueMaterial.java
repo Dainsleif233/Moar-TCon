@@ -22,10 +22,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.tconstruct.library.TinkerRegistry;
-import slimeknights.tconstruct.library.book.content.ContentMaterial;
-import slimeknights.tconstruct.library.book.content.ContentSingleStatMultMaterial;
-import slimeknights.tconstruct.library.book.sectiontransformer.AbstractMaterialSectionTransformer;
-import slimeknights.tconstruct.library.book.sectiontransformer.BowMaterialSectionTransformer;
 import slimeknights.tconstruct.library.events.TinkerCraftingEvent.ToolCraftingEvent;
 import slimeknights.tconstruct.library.events.TinkerCraftingEvent.ToolModifyEvent;
 import slimeknights.tconstruct.library.events.TinkerCraftingEvent.ToolPartReplaceEvent;
@@ -99,7 +95,7 @@ public class UniqueMaterial extends Material {
 	public String getLocalizedName() {
 		try {
 			StackTraceElement[] stacktrace = Thread.currentThread().getStackTrace();
-			if ((stacktrace[3].getClassName().equals(AbstractMaterialSectionTransformer.class.getName()) && stacktrace[3].getMethodName().equals("transform")) || (stacktrace[3].getClassName().equals(ContentMaterial.class.getName()) && stacktrace[3].getMethodName().equals("build"))) {
+			if ((stacktrace[3].getClassName().equals("slimeknights.tconstruct.library.book.sectiontransformer.AbstractMaterialSectionTransformer") && stacktrace[3].getMethodName().equals("transform")) || (stacktrace[3].getClassName().equals("slimeknights.tconstruct.library.book.content.ContentMaterial") && stacktrace[3].getMethodName().equals("build"))) {
 				return I18n.translateToLocal("material.uniquetoolpart.name") + " (" + I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name") + ")";
 			}
 			if (stacktrace[2].getClassName().equals(ModExtraTrait.class.getName()) && stacktrace[2].getMethodName().equals("getLocalizedDesc")) {
@@ -117,10 +113,10 @@ public class UniqueMaterial extends Material {
 			if (stacktrace[3].getClassName().equals(ToolPart.class.getName()) && (stacktrace[3].getMethodName().equals("getItemStackDisplayName") || stacktrace[3].getMethodName().equals("func_77653_i"))) {
 				return I18n.translateToLocal("material.uniquetoolpart.name") + " (" + I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name") + ")";
 			}
-			if (stacktrace[3].getClassName().equals(BowMaterialSectionTransformer.class.getName()) && (stacktrace[3].getMethodName().equals("generateContent"))) {
+			if (stacktrace[3].getClassName().equals("slimeknights.tconstruct.library.book.sectiontransformer.BowMaterialSectionTransformer") && (stacktrace[3].getMethodName().equals("generateContent"))) {
 				return I18n.translateToLocal("material.uniquetoolpart.name") + " (" + I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name") + ")";
 			}
-			if (stacktrace[3].getClassName().equals(ContentSingleStatMultMaterial.class.getName()) && (stacktrace[3].getMethodName().equals("build"))) {
+			if (stacktrace[3].getClassName().equals("slimeknights.tconstruct.library.book.content.ContentSingleStatMultMaterial") && (stacktrace[3].getMethodName().equals("build"))) {
 				return I18n.translateToLocal("material.uniquetoolpart.name") + " (" + I18n.translateToLocal("uniquetoolpart." + this.getIdentifier() + ".name") + ")";
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {
